@@ -1,0 +1,87 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "orca-sessions",
+  "title": "Orca Sessions",
+  "description": "Browse, focus, prompt and manage Orca agent sessions (worktrees and terminals) from Raycast.",
+  "icon": "icon.png",
+  "author": "myksyut",
+  "categories": ["Developer Tools", "Productivity"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "sessions",
+      "title": "Search Orca Sessions",
+      "subtitle": "Orca",
+      "description": "List Orca worktrees and their agents; focus, send prompts, read output, manage.",
+      "mode": "view"
+    },
+    {
+      "name": "new-session",
+      "title": "New Orca Session",
+      "subtitle": "Orca",
+      "description": "Create a new Orca worktree, optionally launching an agent with an initial prompt.",
+      "mode": "view"
+    },
+    {
+      "name": "menubar",
+      "title": "Orca Sessions Menu Bar",
+      "subtitle": "Orca",
+      "description": "Show agent session states in the menu bar and jump to any session.",
+      "mode": "menu-bar",
+      "interval": "30s"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "orcaPath",
+      "title": "Orca CLI Path",
+      "description": "Path to the `orca` CLI. Defaults to the one bundled inside Orca.app.",
+      "type": "textfield",
+      "required": false,
+      "default": "/Applications/Orca.app/Contents/Resources/bin/orca",
+      "placeholder": "/Applications/Orca.app/Contents/Resources/bin/orca"
+    },
+    {
+      "name": "defaultAgent",
+      "title": "Default Agent",
+      "description": "Agent launched by default when creating a new session or terminal.",
+      "type": "dropdown",
+      "required": false,
+      "default": "claude",
+      "data": [
+        { "title": "Claude Code", "value": "claude" },
+        { "title": "Codex", "value": "codex" },
+        { "title": "OpenCode", "value": "opencode" }
+      ]
+    },
+    {
+      "name": "showArchived",
+      "title": "Sessions List",
+      "label": "Show archived worktrees",
+      "description": "Include archived worktrees in the sessions list.",
+      "type": "checkbox",
+      "required": false,
+      "default": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^2.3.1",
+    "@raycast/utils": "^2.3.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.4",
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
