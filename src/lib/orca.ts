@@ -115,10 +115,10 @@ export interface TerminalRead {
 }
 
 export interface RuntimeStatus {
-  appRunning: boolean;
-  runtimeReachable: boolean;
-  runtimeState: string;
-  desktopWindowStatus?: string;
+  target?: { kind: string };
+  app: { running: boolean; pid?: number; desktopWindowStatus?: string };
+  runtime: { state: string; reachable: boolean; connectionState?: string; runtimeId?: string; appVersion?: string };
+  graph?: { state: string };
 }
 
 interface Envelope<T> {
